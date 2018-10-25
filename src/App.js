@@ -4,6 +4,7 @@ import { Switch, Route, withRouter } from 'react-router-dom';
 
 import NavBar from './components/NavBar';
 import Home from './Home';
+import Search from "./Search";
 import Blog from "./Blog";
 
 class App extends Component {
@@ -18,7 +19,7 @@ class App extends Component {
                 <NavBar scrollRef={this} />
                 <Switch>
                     <Route exact path="/" component={() => (<Home setRef={this.setRef} />)} />
-                    <Route path="/Search" Component="" />
+                    <Route path="/Search" component={() => (<Search />)} />
                     <Route exact path="/Blog" component={() => (<Blog />)} />
                 </Switch>
             </React.Fragment>

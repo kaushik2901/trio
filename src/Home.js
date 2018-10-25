@@ -17,6 +17,7 @@ import Button from '@material-ui/core/Button';
 // import IconButton from '@material-ui/core/IconButton';
 
 import TeacherImage from './images/training.svg';
+import AboutUsImage from './images/about-us.svg';
 import HomeImage from './images/house.svg';
 import GroupImage from './images/group.svg';
 import Facebook from './images/facebook.svg';
@@ -25,7 +26,7 @@ import Linkedin from './images/linkedin.svg';
 import Youtube from './images/youtube.svg';
 import Twitter from './images/twitter.svg';
 
-// import Constants from '../Constants';
+import SearchBar from './components/SearchBar';
 
 const styles = (theme) => ({
     root: {
@@ -94,6 +95,14 @@ const styles = (theme) => ({
     cards: {
         margin: 'auto'
     },
+    trioAboutBlock: {
+        textAlign: 'center',
+        paddingTop: '60px',
+        [theme.breakpoints.up('md')]: {
+            paddingLeft: '100px',
+            paddingRight: '100px'
+        },
+    },
     contactBlock: {
         paddingTop: '60px',
         textAlign: 'center',
@@ -158,6 +167,26 @@ const styles = (theme) => ({
     }
 })
 
+const cityData = [  
+    {   
+        name: 'Ahmedabad',
+        area: ['Paldi','Vasna','Ahmd3','Admd4']
+    },
+    {
+        name: 'Vadodara',
+        area: ['Vad1','Vad2','Vad3','Vad4']
+    },
+    {
+        name: 'Surat',
+        area: ['Sur1','Sur2','Sur3','Sur4']},
+    {
+        name: 'Rajkot',
+        area: ['Raj1','Raj2','Raj3','Raj4']
+    }   
+]
+
+const subjectData = ['Chemistry','Biology','Physics','English'];
+
 
 class Home extends Component {
 
@@ -189,10 +218,8 @@ class Home extends Component {
             <div className={classes.root}>
                 <div className={classes.searchBlock} ref={(section) => { setRef('searchBlock', section); }}>
                     <div className={classes.content}>
-                        <Typography variant="h4" style={{textTransform: 'uppercase', textAlign: 'center', color: 'white'}}>Search For Tutor Here</Typography><br />
-                        <form onSubmit={this.searchSubmit} method="GET">
-                            <input type="text" name="search" className={classes.searchBox} placeholder="Search by subject and area" />
-                        </form>
+                        <Typography variant="display1" style={{color: 'white'}}>SEARCH FOR TUTOR</Typography>
+                        <SearchBar />
                     </div>  
                 </div>
                 <div className={classes.skew}></div>
@@ -250,6 +277,28 @@ class Home extends Component {
                             </Grid>
                         </Grid>
                     </Grid> 
+                </div>
+                <div className={classes.trioAboutBlock} ref={(section) => { setRef('trioAboutBlock', section); }}>
+                    <Grid container>
+                        <Grid item xs={12} style={{paddingBottom: '20px'}}>
+                            <Typography variant="display1">About Us</Typography>
+                        </Grid>
+                        <Grid item xs={12}>
+                            <Grid container>
+                                <Grid item sm className={classes.trioImageBlock}>
+                                    <div style={{margin: 'auto'}}>
+                                        <img alt="" src={AboutUsImage} style={{width: '100%'}} />
+                                    </div>
+                                </Grid>
+                                <Grid item sm className={classes.trioTextBlock}>
+                                    <div style={{margin: 'auto'}}>
+                                        <Typography variant="h6">Basically Trio is an institution <br />which provides good teachers to students, <br />Home tutions or Group tutions as per your choice.</Typography>
+                                        <Typography variant="h6">With Trio there is no need to browse <br />through endless profiles, hassle and haggle.</Typography>
+                                    </div>
+                                </Grid>
+                            </Grid>
+                        </Grid>
+                    </Grid>  
                 </div>
                 <div className={classes.contactBlock} ref={(section) => { setRef('contactBlock', section); }}>
                     <Grid container>

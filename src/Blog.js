@@ -10,6 +10,12 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Hidden from '@material-ui/core/Hidden';
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import Button from '@material-ui/core/Button';
 
 const styles = theme => ({
     layout: {
@@ -59,23 +65,70 @@ const featuredPosts = [
     {
       title: 'Featured post',
       date: 'Nov 12',
-      description:
-        'This is a wider card with supporting text below as a natural lead-in to additional content.',
+      description: 'This is a wider card with supporting text below as a natural lead-in to additional content.',
+      content: ''
     },
     {
       title: 'Post title',
       date: 'Nov 11',
-      description:
-        'This is a wider card with supporting text below as a natural lead-in to additional content.',
+      description: 'This is a wider card with supporting text below as a natural lead-in to additional content.',
+      content: ''
     },
   ];
 
 
 class Blog extends Component {
+
+    state = {
+        openBlog: false,
+        blogTitle: "",
+        blogDate: "",
+        blogContent: ""
+    }
+
+    handleOpen = () => {
+        this.setState({
+            openBlog: true
+        })
+    }
+
+    handleClose = () => {
+        this.setState({
+            openBlog: false
+        })
+    }
+
+    handlePost = post => {
+        this.setState({
+            openBlog: true,
+            blogTitle: post.title,
+            blogDate: post.date,
+            blogContent: post.content
+        })
+    }
+
     render() {
         let { classes } = this.props;
         return (
             <div className={classes.layout}>
+
+                <Dialog
+                    scroll="paper"
+                    open={this.state.openBlog}
+                    onClose={this.handleClose}
+                    aria-labelledby="responsive-dialog-title"
+                    >
+                    <DialogTitle id="responsive-dialog-title">{this.state.blogTitle}</DialogTitle>
+                    <DialogContent>
+                        <DialogContentText dangerouslySetInnerHTML={{__html: this.state.blogContent}}>
+                        </DialogContentText>
+                    </DialogContent>
+                    <DialogActions>
+                        <Button onClick={this.handleClose} color="primary" autoFocus>
+                        Close
+                        </Button>
+                    </DialogActions>
+                </Dialog>
 
                 {/* Main featured post */}
                 <Paper className={classes.mainFeaturedPost}>
@@ -111,7 +164,7 @@ class Blog extends Component {
                                 {post.description}
                             </Typography>
                             <Typography variant="subtitle1" color="primary">
-                                Continue reading...
+                                <Button onClick={() => { this.handlePost(post) } }>Read more</Button>
                             </Typography>
                             </CardContent>
                         </div>

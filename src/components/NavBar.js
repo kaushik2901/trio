@@ -12,7 +12,6 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
-// import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
@@ -104,7 +103,7 @@ class NavBar extends Component {
         <AppBar color="default" className={classes.appBar}>
             <Drawer anchor="top" open={this.state.Drawer} onClose={this.offDrawer}>
                 <List>
-                    <ListItem color="default" className={classes.menuButton} onClick={async () => { this.offDrawer(); window.location.hash = "/"; scrollToComponent(scrollRef.searchBlock, { offset: 0, align: 'top', duration: 1500})} }>
+                <ListItem color="default" className={classes.menuButton} component={NavLink} onClick={this.offDrawer} to="/Search">
                         <ListItemText>
                             {navItems[0].name}
                         </ListItemText>
@@ -127,7 +126,11 @@ class NavBar extends Component {
                 </List>
             </Drawer>
             <Toolbar className={classes.toolbar} variant="dense">
-                <div onClick={() => { window.location.hash = "/"; }} style={{cursor: 'pointer'}}>
+                <div onClick={() => { 
+                    window.location.hash = "/";
+                    document.body.scrollTop = 0;
+                    document.documentElement.scrollTop = 0;    
+                }} style={{cursor: 'pointer'}}>
                     <Grid container>
                         <Grid item xs>
                             <img alt="logo" src={Logo} style={{width: '50px', height: '50px'}} />
@@ -142,7 +145,7 @@ class NavBar extends Component {
                 </div>
                 <div className={classes.navBarMenu}>
                     <div className={classes.navBarMenuDesktop}>
-                        <Button color="default" className={classes.menuButton} onClick={() => { window.location.hash = "/"; scrollToComponent(scrollRef.searchBlock, { offset: 0, align: 'top', duration: 1500})} }>
+                    <Button color="default" className={classes.menuButton} component={NavLink} to="/Search">
                             {navItems[0].name}
                         </Button>
                         <Button color="default" className={classes.menuButton} onClick={() => { window.location.hash = "/"; scrollToComponent(scrollRef.trioIntroBlock, { offset: 0, align: 'top', duration: 1500})} }>
