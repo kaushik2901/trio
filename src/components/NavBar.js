@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { NavLink } from 'react-router-dom';
 import scrollToComponent from 'react-scroll-to-component';
 
 import PropTypes from 'prop-types';
@@ -78,6 +79,10 @@ class NavBar extends Component {
         Drawer: false
     }
 
+    preOpen = () => {
+        window.location.hash = "/";
+    }
+
     offDrawer = () => {
         this.setState({
             Drawer: false
@@ -99,22 +104,22 @@ class NavBar extends Component {
         <AppBar color="default" className={classes.appBar}>
             <Drawer anchor="top" open={this.state.Drawer} onClose={this.offDrawer}>
                 <List>
-                    <ListItem color="default" className={classes.menuButton} onClick={() => { this.offDrawer(); scrollToComponent(scrollRef.searchBlock, { offset: 0, align: 'top', duration: 1500})} }>
+                    <ListItem color="default" className={classes.menuButton} onClick={async () => { this.offDrawer(); window.location.hash = "/"; scrollToComponent(scrollRef.searchBlock, { offset: 0, align: 'top', duration: 1500})} }>
                         <ListItemText>
                             {navItems[0].name}
                         </ListItemText>
                     </ListItem>
-                    <ListItem color="default" className={classes.menuButton} onClick={() => { this.offDrawer(); scrollToComponent(scrollRef.trioIntroBlock, { offset: 0, align: 'top', duration: 1500})} }>
+                    <ListItem color="default" className={classes.menuButton} onClick={async () => { this.offDrawer(); window.location.hash = "/"; scrollToComponent(scrollRef.trioIntroBlock, { offset: 0, align: 'top', duration: 1500})} }>
                         <ListItemText>
                             {navItems[1].name}
                         </ListItemText>
                     </ListItem>
-                    <ListItem color="default" className={classes.menuButton} onClick={() => { this.offDrawer(); scrollToComponent(scrollRef.contactBlock, { offset: 0, align: 'top', duration: 1500})} }>
+                    <ListItem color="default" className={classes.menuButton} onClick={async () => { this.offDrawer(); window.location.hash = "/"; scrollToComponent(scrollRef.contactBlock, { offset: 0, align: 'top', duration: 1500})} }>
                         <ListItemText>
                             {navItems[2].name}
                         </ListItemText>
                     </ListItem>
-                    <ListItem color="default" className={classes.menuButton}>
+                    <ListItem color="default" className={classes.menuButton} component={NavLink} onClick={this.offDrawer} to="/Blog">
                         <ListItemText>
                             {navItems[3].name}
                         </ListItemText>
@@ -122,7 +127,7 @@ class NavBar extends Component {
                 </List>
             </Drawer>
             <Toolbar className={classes.toolbar} variant="dense">
-                <div>
+                <div onClick={() => { window.location.hash = "/"; }} style={{cursor: 'pointer'}}>
                     <Grid container>
                         <Grid item xs>
                             <img alt="logo" src={Logo} style={{width: '50px', height: '50px'}} />
@@ -137,16 +142,16 @@ class NavBar extends Component {
                 </div>
                 <div className={classes.navBarMenu}>
                     <div className={classes.navBarMenuDesktop}>
-                        <Button color="default" className={classes.menuButton} onClick={() => scrollToComponent(scrollRef.searchBlock, { offset: 0, align: 'top', duration: 1500})}>
+                        <Button color="default" className={classes.menuButton} onClick={() => { window.location.hash = "/"; scrollToComponent(scrollRef.searchBlock, { offset: 0, align: 'top', duration: 1500})} }>
                             {navItems[0].name}
                         </Button>
-                        <Button color="default" className={classes.menuButton} onClick={() => scrollToComponent(scrollRef.trioIntroBlock, { offset: 0, align: 'top', duration: 1500})}>
+                        <Button color="default" className={classes.menuButton} onClick={() => { window.location.hash = "/"; scrollToComponent(scrollRef.trioIntroBlock, { offset: 0, align: 'top', duration: 1500})} }>
                             {navItems[1].name}
                         </Button>
-                        <Button color="default" className={classes.menuButton} onClick={() => scrollToComponent(scrollRef.contactBlock, { offset: 0, align: 'top', duration: 1500})}>
+                        <Button color="default" className={classes.menuButton} onClick={() => { window.location.hash = "/"; scrollToComponent(scrollRef.contactBlock, { offset: 0, align: 'top', duration: 1500})} }>
                             {navItems[2].name}
                         </Button>
-                        <Button color="default" className={classes.menuButton} >
+                        <Button color="default" className={classes.menuButton} component={NavLink} to="/Blog">
                             {navItems[3].name}
                         </Button>
                     </div>

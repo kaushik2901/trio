@@ -32,9 +32,11 @@ const styles = (theme) => ({
         overflowX: 'hidden'
     },
     searchBlock: {
+        paddingTop: '100px',
         display: 'flex',
-        height: '600px',
-        background: "linear-gradient(to left, #006972 0%,#008080 100%,#008080 100%)",
+        height: '400px',
+        background: '#006972',
+        // background: "linear-gradient(to left, #006972 0%,#008080 100%,#008080 100%)",
         // background: `url(${backgroundImage})`,
         backgroundPosition: 'center',
         width: '100vw',
@@ -42,13 +44,13 @@ const styles = (theme) => ({
         textAlign: 'center',
         backgroundSize: 'cover',
         [theme.breakpoints.up('md')]: {
-            height: '100vh',
+            // height: '100vh',
             width: '100vw',
         },
     },
     trioIntroBlock: {
         textAlign: 'center',
-        paddingTop: '60px',
+        paddingTop: '160px',
         [theme.breakpoints.up('md')]: {
             paddingLeft: '100px',
             paddingRight: '100px'
@@ -121,7 +123,21 @@ const styles = (theme) => ({
         padding: '10px'
     },
     content: {
-        margin: 'auto'
+        margin: 'auto',
+        [theme.breakpoints.down('xs')]: {
+            width: '90%'
+        },
+        width: '70%'
+    },
+    searchBox: {
+        padding: '10px',
+        fontSize: '20px',
+        [theme.breakpoints.up('md')]: {
+            width: '100%'
+        },
+        textAlign: 'center',
+        borderRadius: '4px',
+        border: 'none'
     },
     navBarMenuDesktop: {
         [theme.breakpoints.down('xs')]: {
@@ -132,6 +148,13 @@ const styles = (theme) => ({
         [theme.breakpoints.up('sm')]: {
             display: 'none'
         },
+    },
+    skew: {
+        width: '100%',
+        height: '100px',
+        position: 'absolute',
+        left: '0px',
+        background: 'linear-gradient(to right bottom, #006972 49%, #FFF 50%)'
     }
 })
 
@@ -149,8 +172,12 @@ class Home extends Component {
         });
     };
 
-    componentDidMount() {
+    componentDidMount = () => {
         scrollToComponent(this.searchBlock, { offset: 0, align: 'middle', duration: 500, ease:'inCirc'});
+    }
+
+    searchSubmit = e => {
+        e.preventDefault();
     }
 
     render() {
@@ -162,9 +189,13 @@ class Home extends Component {
             <div className={classes.root}>
                 <div className={classes.searchBlock} ref={(section) => { setRef('searchBlock', section); }}>
                     <div className={classes.content}>
-                        <Typography>Search For Tutor Here</Typography>
+                        <Typography variant="h4" style={{textTransform: 'uppercase', textAlign: 'center', color: 'white'}}>Search For Tutor Here</Typography><br />
+                        <form onSubmit={this.searchSubmit} method="GET">
+                            <input type="text" name="search" className={classes.searchBox} placeholder="Search by subject and area" />
+                        </form>
                     </div>  
                 </div>
+                <div className={classes.skew}></div>
                 <div className={classes.trioIntroBlock} ref={(section) => { setRef('trioIntroBlock', section); }}>
                     <Grid container>
                         <Grid item xs={12} style={{paddingBottom: '20px'}}>

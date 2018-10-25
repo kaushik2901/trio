@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, withRouter } from 'react-router-dom';
 
 
 import NavBar from './components/NavBar';
 import Home from './Home';
+import Blog from "./Blog";
 
 class App extends Component {
 
@@ -18,11 +19,11 @@ class App extends Component {
                 <Switch>
                     <Route exact path="/" component={() => (<Home setRef={this.setRef} />)} />
                     <Route path="/Search" Component="" />
-                    <Route exact path="/Blog" Component="" />
+                    <Route exact path="/Blog" component={() => (<Blog />)} />
                 </Switch>
             </React.Fragment>
         );
     }
 }
 
-export default App;
+export default withRouter(App);
