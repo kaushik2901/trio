@@ -167,26 +167,6 @@ const styles = (theme) => ({
     }
 })
 
-const cityData = [  
-    {   
-        name: 'Ahmedabad',
-        area: ['Paldi','Vasna','Ahmd3','Admd4']
-    },
-    {
-        name: 'Vadodara',
-        area: ['Vad1','Vad2','Vad3','Vad4']
-    },
-    {
-        name: 'Surat',
-        area: ['Sur1','Sur2','Sur3','Sur4']},
-    {
-        name: 'Rajkot',
-        area: ['Raj1','Raj2','Raj3','Raj4']
-    }   
-]
-
-const subjectData = ['Chemistry','Biology','Physics','English'];
-
 
 class Home extends Component {
 

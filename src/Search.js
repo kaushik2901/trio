@@ -3,30 +3,24 @@
 import React, { Component }  from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import AppBar from '@material-ui/core/AppBar';
 import Button from '@material-ui/core/Button';
-import CameraIcon from '@material-ui/icons/PhotoCamera';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
-import CssBaseline from '@material-ui/core/CssBaseline';
 import Grid from '@material-ui/core/Grid';
-import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
 
 import { withStyles } from '@material-ui/core/styles';
 
 const styles = theme => ({
-    appBar: {
-        position: 'relative',
-    },
     icon: {
         marginRight: theme.spacing.unit * 2,
     },
     heroUnit: {
         backgroundColor: theme.palette.background.paper,
+        marginTop: '20px'
     },
     heroContent: {
         maxWidth: 600,
@@ -34,16 +28,17 @@ const styles = theme => ({
         padding: `${theme.spacing.unit * 8}px 0 ${theme.spacing.unit * 6}px`,
     },
     heroButtons: {
-        marginTop: theme.spacing.unit * 4,
+        // marginTop: theme.spacing.unit * 4,
+        textAlign: 'center'
+    },
+    textField: {
+        width: '100%'
     },
     layout: {
         width: 'auto',
-        marginLeft: theme.spacing.unit * 3,
-        marginRight: theme.spacing.unit * 3,
-        [theme.breakpoints.up(1100 + theme.spacing.unit * 3 * 2)]: {
-            width: 1100,
-            marginLeft: 'auto',
-            marginRight: 'auto',
+        [theme.breakpoints.up('md')]: {
+            marginRight: '100px',
+            marginLeft: '100px'
         },
     },
     cardGrid: {
@@ -96,119 +91,99 @@ class Search extends Component {
     render(){
         const { classes } = this.props;
         return (
-            <React.Fragment>
-            <CssBaseline />
-            <AppBar position="static" className={classes.appBar}>
-                <Toolbar>
-                <CameraIcon className={classes.icon} />
-                <Typography variant="h6" color="inherit" noWrap>
-                    Main layout
-                </Typography>
-                </Toolbar>  
-            </AppBar>
             <main>
                 {/* Hero unit */}
                 <div className={classes.heroUnit}>
                 <div className={classes.heroContent}>
-                    <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
-                    Main layout
-                    </Typography>
-                    <Typography variant="h6" align="center" color="textSecondary" paragraph>
-                    Something short and leading about the collection below—its contents, the creator, etc.
-                    Make it short and sweet, but not too short so folks don&apos;t simply skip over it
-                    entirely.
+                    <Typography variant="h4" align="center" color="textSecondary" paragraph>
+                    Search Here
                     </Typography>
                     <div className={classes.heroButtons}>
-                    <Grid container spacing={16} justify="center" alignItems={'center'}>
-                        
-                        <Grid item>
-                            <TextField
-                                id="outlined-select-currency-native"
-                                select
-                                label="City"
-                                className={classes.textField}
-                                value={this.state.selectedCity}
-                                onChange={this.handleChange('selectedCity')}
-                                SelectProps={{
-                                    native: true,
-                                    MenuProps: {
-                                    className: classes.menu,
-                                    },
-                                }}
-                                helperText="Please select City"
-                                margin="normal"
-                                variant="outlined"
-                                >
-                                {cityData.map((option) => {
-                                    
-                                    let key = Object.keys(option)[0];
-                                    return (
-                                        <option key={key} value={key}>
-                                        {key}
-                                        </option>
+                        <Grid container spacing={16} justify="center" alignItems={'center'}>                
+                            <Grid item xs={12} sm>
+                                <TextField
+                                    id="city"
+                                    select
+                                    label="City"
+                                    className={classes.textField}
+                                    value={this.state.selectedCity}
+                                    onChange={this.handleChange('selectedCity')}
+                                    SelectProps={{
+                                        native: true,
+                                        MenuProps: {
+                                        className: classes.menu,
+                                        },
+                                    }}
+                                    margin="normal"
+                                    variant="outlined"
+                                    >
+                                    {cityData.map(option => {
+                                        let key = Object.keys(option)[0];
+                                        return (
+                                            <option key={key} value={key}>
+                                            {key}
+                                            </option>
+                                        )}
                                     )}
-                                )}
 
-                            </TextField>
-                        </Grid>
-                        <Grid item>
-                            <TextField
-                                id="outlined-select-currency-native"
-                                select
-                                label="Locality"
-                                className={classes.textField}
-                                value={this.state.selectedLocality}
-                                onChange={this.handleChange('selectedLocality')}
-                                SelectProps={{
-                                    native: true,
-                                    MenuProps: {
-                                    className: classes.menu,
-                                    },
-                                }}
-                                helperText="Please select locality"
-                                margin="normal"
-                                variant="outlined"
-                                >
-                                {this.state.localityArray.map(option => {
-                                    return(
+                                </TextField>
+                            </Grid>
+                            <Grid item xs={12} sm>
+                                <TextField
+                                    id="locality"
+                                    select
+                                    label="Locality"
+                                    className={classes.textField}
+                                    value={this.state.selectedLocality}
+                                    onChange={this.handleChange('selectedLocality')}
+                                    SelectProps={{
+                                        native: true,
+                                        MenuProps: {
+                                        className: classes.menu,
+                                        },
+                                    }}
+                                    margin="normal"
+                                    variant="outlined"
+                                    >
+                                    {this.state.localityArray.map(option => {
+                                        return(
+                                            <option key={option} value={option}>
+                                            {option}
+                                            </option>
+                                        )}
+                                    )}
+                                </TextField>
+                            </Grid>
+                            <Grid item xs={12} sm>
+                                <TextField
+                                    id="subject"
+                                    select
+                                    label="subject"
+                                    className={classes.textField}
+                                    value={this.state.selectedSubject}
+                                    onChange={this.handleChange('selectedSubject')}
+                                    SelectProps={{
+                                        native: true,
+                                        MenuProps: {
+                                        className: classes.menu,
+                                        },
+                                    }}
+                                    margin="normal"
+                                    variant="outlined"
+                                    >
+                                    {subjectData.map(option => (
                                         <option key={option} value={option}>
                                         {option}
                                         </option>
-                                    )}
-                                )}
-                            </TextField>
+                                    ))}
+                                </TextField>
+                            </Grid>
+                            <Grid item xs={12}>
+                                <Button variant="outlined" className={classes.Button} >
+                                    Search
+                                </Button>
+                            </Grid>
                         </Grid>
-                        <Grid item>
-                            <TextField
-                                id="outlined-select-currency-native"
-                                select
-                                label="subject"
-                                className={classes.textField}
-                                value={this.state.selectedSubject}
-                                onChange={this.handleChange('subject')}
-                                SelectProps={{
-                                    native: true,
-                                    MenuProps: {
-                                    className: classes.menu,
-                                    },
-                                }}
-                                helperText="Please select subject"
-                                margin="normal"
-                                variant="outlined"
-                                >
-                                {subjectData.map(option => (
-                                    <option key={option} value={option}>
-                                    {option}
-                                    </option>
-                                ))}
-                            </TextField>
-                        </Grid>
-                        <Grid item>
-                            <Button variant="contained" color="primary">
-                                Go
-                            </Button>
-                        </Grid>
-                    </Grid>
                     </div>
                 </div>
                 </div>
@@ -245,7 +220,6 @@ class Search extends Component {
                 </Grid>
                 </div>
             </main>
-            </React.Fragment>
         );
     }
 }

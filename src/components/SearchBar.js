@@ -12,8 +12,11 @@ const styles = theme => ({
         marginTop : '30px',
     },
     textField: {
-        width: "100%"
+        width: "100%",
+        borderColor: 'white',
+        color: 'white'
     },
+    Button: { borderColor: 'white', color: 'white' }
 });
 
 const cityData = [  {'Ahmedabad' : ['Paldi','Vasna','Ahmd3','Admd4']},
@@ -143,7 +146,7 @@ class SearchBar extends Component {
                         </TextField>
                     </Grid>
                     <Grid item xs={12}>
-                        <Button variant="outlined" component={NavLink} to={'Search'} >
+                        <Button variant="outlined" component={NavLink} to={'Search'} className={classes.Button} >
                             Search
                         </Button>
                     </Grid>
