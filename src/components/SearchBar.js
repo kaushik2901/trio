@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
-import TextField from '@material-ui/core/TextField';
 import { withStyles } from '@material-ui/core/styles';
 import {NavLink} from 'react-router-dom';
 
@@ -14,7 +13,11 @@ const styles = theme => ({
     textField: {
         width: "100%",
         borderColor: 'white',
-        color: 'white'
+        // color: 'white',
+        padding: '10px',
+        border: 'none',
+        background: 'white',
+        borderRadius: '4px'
     },
     Button: { borderColor: 'white', color: 'white' }
 });
@@ -68,7 +71,7 @@ class SearchBar extends Component {
             <div className={classes.wrapper}>
                 <Grid container spacing={16} justify="center" alignItems={'center'}>                
                     <Grid item xs={12} sm>
-                        <TextField
+                        <select
                             id="city"
                             select
                             label="City"
@@ -93,10 +96,10 @@ class SearchBar extends Component {
                                 )}
                             )}
 
-                        </TextField>
+                        </select>
                     </Grid>
                     <Grid item xs={12} sm>
-                        <TextField
+                        <select
                             id="locality"
                             select
                             label="Locality"
@@ -119,10 +122,10 @@ class SearchBar extends Component {
                                     </option>
                                 )}
                             )}
-                        </TextField>
+                        </select>
                     </Grid>
                     <Grid item xs={12} sm>
-                        <TextField
+                        <select
                             id="subject"
                             select
                             label="subject"
@@ -143,7 +146,7 @@ class SearchBar extends Component {
                                 {option}
                                 </option>
                             ))}
-                        </TextField>
+                        </select>
                     </Grid>
                     <Grid item xs={12}>
                         <Button variant="outlined" component={NavLink} to={'Search'} className={classes.Button} >

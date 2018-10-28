@@ -10,7 +10,6 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
-import TextField from '@material-ui/core/TextField';
 
 import { withStyles } from '@material-ui/core/styles';
 
@@ -18,21 +17,36 @@ const styles = theme => ({
     icon: {
         marginRight: theme.spacing.unit * 2,
     },
-    heroUnit: {
-        backgroundColor: theme.palette.background.paper,
-        marginTop: '20px'
-    },
+    // heroUnit: {
+    //     backgroundColor: theme.palette.background.paper,
+    //     marginTop: '20px',
+    //     width: '100%',
+    //     textAlign: 'center'
+    // },
     heroContent: {
-        maxWidth: 600,
-        margin: '0 auto',
-        padding: `${theme.spacing.unit * 8}px 0 ${theme.spacing.unit * 6}px`,
+        backgroundColor: theme.palette.background.paper,
+        marginTop: '80px',
+        textAlign: 'center',
+        // margin: '30px',
+        [theme.breakpoints.up('md')]: {
+            marginRight: '100px',
+            marginLeft: '100px'
+        },
+        // maxWidth: 600,
+        // padding: `${theme.spacing.unit * 8}px 0 ${theme.spacing.unit * 6}px`,
     },
     heroButtons: {
         // marginTop: theme.spacing.unit * 4,
         textAlign: 'center'
     },
     textField: {
-        width: '100%'
+        width: "100%",
+        border: '1px solid rgba(0, 0, 0, 0.23)',
+        // color: 'white',
+        padding: '10px',
+        // border: 'none',
+        background: 'white',
+        borderRadius: '4px'
     },
     layout: {
         width: 'auto',
@@ -40,9 +54,11 @@ const styles = theme => ({
             marginRight: '100px',
             marginLeft: '100px'
         },
+        // marginLeft: '15px'
     },
     cardGrid: {
         padding: `${theme.spacing.unit * 8}px 0`,
+        textAlign: 'center',
     },
     card: {
         height: '100%',
@@ -93,7 +109,6 @@ class Search extends Component {
         return (
             <main>
                 {/* Hero unit */}
-                <div className={classes.heroUnit}>
                 <div className={classes.heroContent}>
                     <Typography variant="h4" align="center" color="textSecondary" paragraph>
                     Search Here
@@ -101,7 +116,7 @@ class Search extends Component {
                     <div className={classes.heroButtons}>
                         <Grid container spacing={16} justify="center" alignItems={'center'}>                
                             <Grid item xs={12} sm>
-                                <TextField
+                                <select
                                     id="city"
                                     select
                                     label="City"
@@ -126,10 +141,10 @@ class Search extends Component {
                                         )}
                                     )}
 
-                                </TextField>
+                                </select>
                             </Grid>
                             <Grid item xs={12} sm>
-                                <TextField
+                                <select
                                     id="locality"
                                     select
                                     label="Locality"
@@ -152,10 +167,10 @@ class Search extends Component {
                                             </option>
                                         )}
                                     )}
-                                </TextField>
+                                </select>
                             </Grid>
                             <Grid item xs={12} sm>
-                                <TextField
+                                <select
                                     id="subject"
                                     select
                                     label="subject"
@@ -176,7 +191,7 @@ class Search extends Component {
                                         {option}
                                         </option>
                                     ))}
-                                </TextField>
+                                </select>
                             </Grid>
                             <Grid item xs={12}>
                                 <Button variant="outlined" className={classes.Button} >
@@ -185,7 +200,6 @@ class Search extends Component {
                             </Grid>
                         </Grid>
                     </div>
-                </div>
                 </div>
                 <div className={classNames(classes.layout, classes.cardGrid)}>
                 {/* End hero unit */}
