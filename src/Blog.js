@@ -146,7 +146,12 @@ class Blog extends Component {
                 </Paper>
                 <Grid container spacing={32} alignItems="stretch" className={classes.mainGrid}>
                     <Grid item md={8} className={classes.mainPost}>
-                        <img alt="" src="https://picsum.photos/500/500/?random&a=1" className={classes.image} />
+                        <div style={{position: 'relative'}}>
+                            <img alt="" src="https://picsum.photos/500/500/?random&a=1" className={classes.image} />
+                            <div style={{position: 'absolute', bottom: '0%', left: '0px', padding: "10px"}}>
+                                <Typography variant="title" style={{color: 'white'}}>The beautiful thing about learning is that no one can take it away from you</Typography>
+                            </div>
+                        </div>
                     </Grid>
                     <Grid item md={4} className={classes.secondGrid}>
                         <Grid container spacing={32}>
@@ -204,7 +209,12 @@ class Blog extends Component {
                         </Grid>
                     </Grid>
                     <Grid item md={8} className={classes.mainPost}>
-                        <img alt="" src="https://picsum.photos/500/500/?random&a=6" className={classes.image} />
+                    <div style={{position: 'relative'}}>
+                            <img alt="" src="https://picsum.photos/500/500/?random&a=6" className={classes.image} />
+                            <div style={{position: 'absolute', bottom: '0%', left: '0px', padding: "10px"}}>
+                                <Typography variant="title" style={{color: 'white'}}>The beautiful thing about learning is that no one can take it away from you</Typography>
+                            </div>
+                        </div>
                     </Grid>
                 </Grid>
                 {/* End sub featured posts */}

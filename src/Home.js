@@ -116,7 +116,7 @@ const styles = (theme) => ({
     },
     cardWrapper: {
         padding: '20px',
-        minHeight: '300px',
+        // minHeight: '300px',
         width: '100%',
         display: 'flex',
         textAlign: 'center'
@@ -164,7 +164,12 @@ const styles = (theme) => ({
     },
     socialIcons: {
         width: "40px",
-        padding: '10px'
+        padding: '10px',
+    },
+    socialIconDiv: {
+        [theme.breakpoints.down('md')]: {
+            padding: '40px'
+        },
     },
     content: {
         margin: 'auto',
@@ -394,26 +399,52 @@ class Home extends Component {
                         <Grid item xs={12}>
                             <Grid container>
                                 <Grid item sm xs={12} className={classes.cardWrapper}>
-                                    <div className={classes.cards} style={{textAlign: 'left', width: '300px'}}>
-                                        <Typography variant="title">Trio Teachers</Typography>
-                                        <br />
-                                        <Typography variant="body1">
-                                            202, <br />Sahajanand Complex, <br />Near Unique Group Tution, <br />New C. G. Road, <br />Chandkheda, <br />Ahmedabad 382424
-                                        </Typography>
-                                        <br />
-                                        <Typography variant="body1">
-                                            8487999309
-                                        </Typography>
-                                        <Typography variant="body1">
-                                            7016373618
-                                        </Typography>
-                                        <Typography variant="body1">
-                                            trio.education.100@gmail.com
-                                        </Typography>
-                                    </div>
+                                    <Grid container>
+                                        <Grid item xs={12}>
+                                            <div className={classes.cards} style={{textAlign: 'left', width: '90%'}}>
+                                                <Typography variant="title">Trio Teachers</Typography>
+                                                <br />
+                                                <Typography variant="body1">
+                                                    202, <br />Sahajanand Complex, <br />Near Unique Group Tution, <br />New C. G. Road, <br />Chandkheda, <br />Ahmedabad 382424
+                                                </Typography>
+                                            </div>
+                                            {/* <br /><br /> */}
+                                        </Grid>
+                                    </Grid>
                                 </Grid>
                                 <Grid item sm xs={12} className={classes.cardWrapper}>
-                                    <div className={classes.cards}>
+                                    <Grid container>
+                                        <Grid item xs={12} className={classes.socialIconDiv}>
+                                            <a href="https://m.facebook.com/Trio-Teachers-364527030757298/?ref=bookmarks" target="blank"><img alt="" src={Facebook} className={classes.socialIcons} /></a>
+                                            <a href="https://twitter.com/TeachersTrio?s=08" target="blank"><img alt="" src={Twitter} className={classes.socialIcons} /></a>
+                                            <a href="https://www.instagram.com/p/BpUO8m4Beqc/?utm_source=ig_share_sheet&igshid=95t9iwk79hei" target="blank"><img alt="" src={Instagram} className={classes.socialIcons} /></a>
+                                            {/* <a href="http://google.com" target="blank"><img alt="" src={Youtube} className={classes.socialIcons} /></a> */}
+                                            <a href="http://google.com" target="blank"><img alt="" src={Linkedin} className={classes.socialIcons} /></a>
+                                        </Grid>
+                                        <Grid item xs={12}>
+                                            <div className={classes.cards} style={{textAlign: 'left', width: '90%'}}>
+                                                {/* <br />
+                                                <br />
+                                                <br />
+                                                <br /> */}
+                                                <Typography variant="body1">
+                                                    8487999309
+                                                </Typography>
+                                                <Typography variant="body1">
+                                                    7016373618
+                                                </Typography>
+                                                <Typography variant="body1">
+                                                    trio.education.100@gmail.com
+                                                </Typography>
+                                                <br />
+                                                <br />
+                                                <Button href="mailto:trio.education.100@gmail.com" variant="raised" className={classes.Button}>Mail us</Button>
+                                            </div>
+                                        </Grid>
+                                    </Grid>
+                                </Grid>
+                                <Grid item sm xs={12} className={classes.cardWrapper}>
+                                    <div className={classes.cards} style={{width: '90%'}}>
                                         <TextField
                                             id="email"
                                             label="Email"
@@ -440,17 +471,17 @@ class Home extends Component {
                         </Grid>
                     </Grid>
                 </div>
-                <div className={classes.footer}>
+                {/* <div className={classes.footer}>
                     <Grid container>
                         <Grid item xs={12} style={{paddingBottom: '30px'}}>
-                            <a href="http://google.com" target="blank"><img alt="" src={Facebook} className={classes.socialIcons} /></a>
+                            <a href="https://m.facebook.com/Trio-Teachers-364527030757298/?ref=bookmarks" target="blank"><img alt="" src={Facebook} className={classes.socialIcons} /></a>
                             <a href="https://twitter.com/TeachersTrio?s=08" target="blank"><img alt="" src={Twitter} className={classes.socialIcons} /></a>
                             <a href="https://www.instagram.com/p/BpUO8m4Beqc/?utm_source=ig_share_sheet&igshid=95t9iwk79hei" target="blank"><img alt="" src={Instagram} className={classes.socialIcons} /></a>
                             <a href="http://google.com" target="blank"><img alt="" src={Youtube} className={classes.socialIcons} /></a>
                             <a href="http://google.com" target="blank"><img alt="" src={Linkedin} className={classes.socialIcons} /></a>
                         </Grid>
                     </Grid>
-                </div>
+                </div> */}
             </div>
         );
     }
