@@ -16,6 +16,8 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 // import IconButton from '@material-ui/core/IconButton';
 
+import Vector from './images/wave2.svg';
+
 import TeacherImage from './images/working.svg';
 // import AboutUsImage from './images/about-us.svg';
 import HomeImage from './images/house.svg';
@@ -31,7 +33,6 @@ import AboutUsImage from './images/students.svg'
 import Facebook from './images/facebook.svg';
 import Instagram from './images/instagram.svg';
 import Linkedin from './images/linkedin.svg';
-import Youtube from './images/youtube.svg';
 import Twitter from './images/twitter.svg';
 
 // import {  } from "./images/";
@@ -44,7 +45,7 @@ const styles = (theme) => ({
     },
     searchBlock: {
         paddingTop: '100px',
-        paddingBottom:  '70px',
+        // paddingBottom:  '70px',
         display: 'flex',
         height: '400px',
         background: '#006972',
@@ -218,10 +219,16 @@ const styles = (theme) => ({
     },
     skew: {
         // width: '100%',
-        height: '70px',
+        // height: '100px',
         // paddingTop: '100px',
         // position: 'absolute',
-        background: 'linear-gradient(to right bottom, #006972 49%, #FFF 50%)'
+        padding: '0px',
+        background: "#006972",
+        marginBottom: "-60px"
+        // bottom: '0px'
+        // paddingBottom: "-100px"
+        // backgroundImage: `url(${Vector})`
+        // background: 'linear-gradient(to right bottom, #006972 49%, #FFF 50%)'
     },
     skew2: {
         // width: '100%',
@@ -265,9 +272,11 @@ class Home extends Component {
                     <div className={classes.content}>
                         <Typography variant="display1" style={{color: 'white'}}>SEARCH FOR TUTOR</Typography>
                         <SearchBar />
-                    </div>  
+                    </div>
                 </div>
-                <div className={classes.skew}></div>
+                <div className={classes.skew}>
+                    <img src={Vector} alt="" style={{width: '100%', marginBottom: '-10px' }} />
+                </div>
                 <div className={classes.trioIntroBlock} ref={(section) => { setRef('trioIntroBlock', section); }}>
                     <Grid container>
                         <Grid item xs={12} style={{paddingBottom: '20px'}}>
@@ -381,7 +390,7 @@ class Home extends Component {
                                         <Typography variant="subtitle1"><span role="img" aria-labelledby="jsx-a11y/accessible-emoji">👉</span> Trio teachers are concentrating quality of teaching and proper guidance for students.</Typography>
                                         <Typography variant="subtitle1"><span role="img" aria-labelledby="jsx-a11y/accessible-emoji">👉</span> Our teachers will teach academic and soft skills so students can understand the social responsibilities</Typography>
                                         <Typography variant="subtitle1"><span role="img" aria-labelledby="jsx-a11y/accessible-emoji">👉</span> Idea of trio teachers is came from end the professionalism.</Typography>
-                                        <Typography variant="subtitle1"><span role="img" aria-labelledby="jsx-a11y/accessible-emoji">👉</span> So we at trioteachers are trying to unwind the difficulties of getting a  tutor which is according to your expectations and exceed most of them. We are trying to deliver the best anyone could get in form of art, education, sports, yoga any category you name it.</Typography>
+                                        {/* <Typography variant="subtitle1"><span role="img" aria-labelledby="jsx-a11y/accessible-emoji">👉</span> So we at trioteachers are trying to unwind the difficulties of getting a  tutor which is according to your expectations and exceed most of them. We are trying to deliver the best anyone could get in form of art, education, sports, yoga any category you name it.</Typography> */}
                                         <Typography variant="subtitle1"><span role="img" aria-labelledby="jsx-a11y/accessible-emoji">👉</span> This team is not only specialized in curricuars but also in co curriculars that will ensure the overall development of your child and will help them to rise to great heigts.</Typography>
                                         <Typography variant="subtitle1"><span role="img" aria-labelledby="jsx-a11y/accessible-emoji">👉</span> We at triotutors have highly trained professionals that will focus on bringing the best of your child.</Typography>
                                         <Typography variant="subtitle1"><span role="img" aria-labelledby="jsx-a11y/accessible-emoji">👉</span> This not only gives you an edge over other tutors but provides you with an essurance of a personalized academic support.</Typography>
@@ -471,17 +480,6 @@ class Home extends Component {
                         </Grid>
                     </Grid>
                 </div>
-                {/* <div className={classes.footer}>
-                    <Grid container>
-                        <Grid item xs={12} style={{paddingBottom: '30px'}}>
-                            <a href="https://m.facebook.com/Trio-Teachers-364527030757298/?ref=bookmarks" target="blank"><img alt="" src={Facebook} className={classes.socialIcons} /></a>
-                            <a href="https://twitter.com/TeachersTrio?s=08" target="blank"><img alt="" src={Twitter} className={classes.socialIcons} /></a>
-                            <a href="https://www.instagram.com/p/BpUO8m4Beqc/?utm_source=ig_share_sheet&igshid=95t9iwk79hei" target="blank"><img alt="" src={Instagram} className={classes.socialIcons} /></a>
-                            <a href="http://google.com" target="blank"><img alt="" src={Youtube} className={classes.socialIcons} /></a>
-                            <a href="http://google.com" target="blank"><img alt="" src={Linkedin} className={classes.socialIcons} /></a>
-                        </Grid>
-                    </Grid>
-                </div> */}
             </div>
         );
     }
