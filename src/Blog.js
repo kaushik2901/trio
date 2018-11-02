@@ -17,6 +17,16 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Button from '@material-ui/core/Button';
 
+import aPainting from './images/paintings/1.png';
+import bPainting from './images/paintings/2.png';
+import cPainting from './images/paintings/3.png';
+// import dPainting from './images/paintings/4.png';
+import ePainting from './images/paintings/5.png';
+import fPainting from './images/paintings/6.png';
+// import gPainting from './images/paintings/7.png';
+import hPainting from './images/paintings/8.png';
+// import iPainting from './images/paintings/9.png';
+
 const styles = theme => ({
     layout: {
         width: 'auto',
@@ -134,11 +144,10 @@ class Blog extends Component {
                 <Grid item md={6}>
                     <div className={classes.mainFeaturedPostContent}>
                     <Typography component="h1" variant="h3" color="inherit" gutterBottom>
-                        Title of a longer featured blog post
+                    The beautiful thing about learning is that..
                     </Typography>
                     <Typography variant="h5" color="inherit" paragraph>
-                        Multiple lines of text that form the lede, informing new readers quickly and
-                        efficiently about what&apos;s most interesting in this post&apos;s contents…
+                    No one can take it away from you.
                     </Typography>
                     </div>
                 </Grid>
@@ -147,19 +156,19 @@ class Blog extends Component {
                 <Grid container spacing={32} alignItems="stretch" className={classes.mainGrid}>
                     <Grid item md={8} className={classes.mainPost}>
                         <div style={{position: 'relative'}}>
-                            <img alt="" src="https://picsum.photos/500/500/?random&a=1" className={classes.image} />
+                            <img alt="" src={fPainting} className={classes.image} />
                             <div style={{position: 'absolute', bottom: '0%', left: '0px', padding: "10px"}}>
-                                <Typography variant="title" style={{color: 'white'}}>The beautiful thing about learning is that no one can take it away from you</Typography>
+                                <Typography variant="title" style={{color: 'white'}}></Typography>
                             </div>
                         </div>
                     </Grid>
                     <Grid item md={4} className={classes.secondGrid}>
                         <Grid container spacing={32}>
                             <Grid item xs={12} className={classes.mainPost}>
-                                <img alt="" src="https://picsum.photos/500/500/?random&a=2" className={classes.image} />
+                                <img alt="" src={bPainting} className={classes.image} />
                             </Grid>
                             <Grid item xs={12} className={classes.mainPost}>
-                                <img alt="" src="https://picsum.photos/500/500/?random&a=3" className={classes.image} />
+                                <img alt="" src={hPainting} className={classes.image} />
                             </Grid>
                         </Grid>
                     </Grid>
@@ -201,18 +210,18 @@ class Blog extends Component {
                     <Grid item md={4} className={classes.secondGrid}>
                         <Grid container spacing={32}>
                             <Grid item xs={12} className={classes.mainPost}>
-                                <img alt="" src="https://picsum.photos/500/500/?random&a=4" className={classes.image} />
+                                <img alt="" src={ePainting} className={classes.image} />
                             </Grid>
                             <Grid item xs={12} className={classes.mainPost}>
-                                <img alt="" src="https://picsum.photos/500/500/?random&a=5" className={classes.image} />
+                                <img alt="" src={cPainting} className={classes.image} />
                             </Grid>
                         </Grid>
                     </Grid>
                     <Grid item md={8} className={classes.mainPost}>
                     <div style={{position: 'relative'}}>
-                            <img alt="" src="https://picsum.photos/500/500/?random&a=6" className={classes.image} />
+                            <img alt="" src={aPainting} className={classes.image} />
                             <div style={{position: 'absolute', bottom: '0%', left: '0px', padding: "10px"}}>
-                                <Typography variant="title" style={{color: 'white'}}>The beautiful thing about learning is that no one can take it away from you</Typography>
+                                {/* <Typography variant="title" style={{color: 'white'}}>The beautiful thing about learning is that no one can take it away from you</Typography> */}
                             </div>
                         </div>
                     </Grid>

@@ -16,10 +16,13 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 // import IconButton from '@material-ui/core/IconButton';
 
+// import backgroundImage from './images/homegbg.jpg';
+// import LeftQuote from './images/left-quote.svg';
+
+
 import Vector from './images/wave2.svg';
 
 import TeacherImage from './images/working.svg';
-// import AboutUsImage from './images/about-us.svg';
 import HomeImage from './images/house.svg';
 import GroupImage from './images/networking.svg';
 
@@ -44,23 +47,30 @@ const styles = (theme) => ({
         overflowX: 'hidden'
     },
     searchBlock: {
+        position: 'relative',
         paddingTop: '100px',
-        // paddingBottom:  '70px',
+        // paddingBottom:  '170px',
+        // marginBottom: '-1px',
         display: 'flex',
-        height: '400px',
-        background: '#006972',
-        // background: "linear-gradient(to left, #006972 0%,#008080 100%,#008080 100%)",
+        minHeight: '400px',
+        // background: '#006972',
+        background: "linear-gradient(to bottom, #006972 0%,#008080 100%,#008080 100%)",
         // background: `url(${backgroundImage})`,
-        backgroundPosition: 'center',
+        // backgroundPosition: 'center',
         width: '100vw',
-        overflow: 'hidden',
+        // overflow: 'hidden',
         textAlign: 'center',
         backgroundSize: 'cover',
         [theme.breakpoints.up('md')]: {
             // height: '100vh',
             width: '100vw',
-            paddingBottom: '0px'
+            paddingBottom: '0px',
+            paddingTop: '200px'
         },
+        // overflow: 'auto'
+        // [theme.breakpoints.down('xs')]: {
+        //     paddingBottom:
+        // },
     },
     trioIntroBlock: {
         textAlign: 'center',
@@ -221,11 +231,12 @@ const styles = (theme) => ({
         // width: '100%',
         // height: '100px',
         // paddingTop: '100px',
-        // position: 'absolute',
+        position: 'absolute',
         padding: '0px',
-        background: "#006972",
-        marginBottom: "-60px"
-        // bottom: '0px'
+        // background: "#006972",
+        // marginBottom: "-60px",
+        bottom: '0px',
+        width: '100%',
         // paddingBottom: "-100px"
         // backgroundImage: `url(${Vector})`
         // background: 'linear-gradient(to right bottom, #006972 49%, #FFF 50%)'
@@ -236,6 +247,22 @@ const styles = (theme) => ({
         // paddingTop: '100px',
         // position: 'absolute',
         background: 'linear-gradient(to right top, #006972 49%, #FFF 50%)'
+    },
+    quoteBlock: {
+        // textAlign: 'center',
+    },
+    blockquote: {
+        // minWidth: '200px',
+        // width: '90%',
+        // textAlign: 'center',
+        padding: '20px',
+        // minHeight: '200px',
+        [theme.breakpoints.up('md')]: {
+            paddingLeft: '100px',
+            paddingRight: '100px'
+        },
+        background: 'lightgray',
+        borderLeft: '10px solid darkgray'
     }
 })
 
@@ -269,13 +296,19 @@ class Home extends Component {
         return (
             <div className={classes.root}>
                 <div className={classes.searchBlock} ref={(section) => { setRef('searchBlock', section); }}>
-                    <div className={classes.content}>
-                        <Typography variant="display1" style={{color: 'white'}}>SEARCH FOR TUTOR</Typography>
-                        <SearchBar />
-                    </div>
-                </div>
-                <div className={classes.skew}>
-                    <img src={Vector} alt="" style={{width: '100%', marginBottom: '-10px' }} />
+                    <Grid container>
+                        <Grid item xs={12}>
+                        <div className={classes.content}>
+                            <Typography variant="display1" style={{color: 'white'}}>SEARCH FOR TUTOR</Typography>
+                            <SearchBar />
+                        </div>
+                        </Grid>
+                        <Grid item xs={12}>
+                            <div className={classes.skew}>
+                                <img src={Vector} alt="" style={{width: '100%', marginBottom: '-10px' }} />
+                            </div>
+                        </Grid>
+                    </Grid>
                 </div>
                 <div className={classes.trioIntroBlock} ref={(section) => { setRef('trioIntroBlock', section); }}>
                     <Grid container>
@@ -400,6 +433,20 @@ class Home extends Component {
                         </Grid>
                     </Grid>
                 </div>
+                <div className={classes.quoteBlock}>
+                    <blockquote className={classes.blockquote}>
+                        {/* <Grid container>
+                            <Grid item md={4} ld={2}>
+                                
+                            </Grid>
+                            <Grid item md={8} ld={10} style={{paddingLeft: '20px'}}> */}
+                                {/* <img src={LeftQuote} style={{width: '100px'}} /> */}
+                                <Typography variant="display1"><i>Education is what remains after one has forgotten what one has learned in school.</i></Typography>
+                                <Typography variant="title" style={{textAlign: 'right'}}> - Albert Einstein</Typography>
+                            {/* </Grid>
+                        </Grid> */}
+                    </blockquote>
+                </div>
                 <div className={classes.contactBlock} ref={(section) => { setRef('contactBlock', section); }}>
                     <Grid container>
                         <Grid item xs={12} style={{paddingBottom: '30px'}}>
@@ -423,13 +470,6 @@ class Home extends Component {
                                 </Grid>
                                 <Grid item sm xs={12} className={classes.cardWrapper}>
                                     <Grid container>
-                                        <Grid item xs={12} className={classes.socialIconDiv}>
-                                            <a href="https://m.facebook.com/Trio-Teachers-364527030757298/?ref=bookmarks" target="blank"><img alt="" src={Facebook} className={classes.socialIcons} /></a>
-                                            <a href="https://twitter.com/TeachersTrio?s=08" target="blank"><img alt="" src={Twitter} className={classes.socialIcons} /></a>
-                                            <a href="https://www.instagram.com/p/BpUO8m4Beqc/?utm_source=ig_share_sheet&igshid=95t9iwk79hei" target="blank"><img alt="" src={Instagram} className={classes.socialIcons} /></a>
-                                            {/* <a href="http://google.com" target="blank"><img alt="" src={Youtube} className={classes.socialIcons} /></a> */}
-                                            <a href="http://google.com" target="blank"><img alt="" src={Linkedin} className={classes.socialIcons} /></a>
-                                        </Grid>
                                         <Grid item xs={12}>
                                             <div className={classes.cards} style={{textAlign: 'left', width: '90%'}}>
                                                 {/* <br />
@@ -477,6 +517,13 @@ class Home extends Component {
                                     </div>
                                 </Grid>
                             </Grid>
+                        </Grid>
+                        <Grid item xs={12} className={classes.socialIconDiv}>
+                            <a href="https://m.facebook.com/Trio-Teachers-364527030757298/?ref=bookmarks" target="blank"><img alt="" src={Facebook} className={classes.socialIcons} /></a>
+                            <a href="https://twitter.com/TeachersTrio?s=08" target="blank"><img alt="" src={Twitter} className={classes.socialIcons} /></a>
+                            <a href="https://www.instagram.com/p/BpUO8m4Beqc/?utm_source=ig_share_sheet&igshid=95t9iwk79hei" target="blank"><img alt="" src={Instagram} className={classes.socialIcons} /></a>
+                            {/* <a href="http://google.com" target="blank"><img alt="" src={Youtube} className={classes.socialIcons} /></a> */}
+                            <a href="http://google.com" target="blank"><img alt="" src={Linkedin} className={classes.socialIcons} /></a>
                         </Grid>
                     </Grid>
                 </div>
