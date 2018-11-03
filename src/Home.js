@@ -549,7 +549,7 @@ class Home extends Component {
                             <a href="https://twitter.com/TeachersTrio?s=08" target="blank"><img alt="" src={Twitter} className={classes.socialIcons} /></a>
                             <a href="https://www.instagram.com/p/BpUO8m4Beqc/?utm_source=ig_share_sheet&igshid=95t9iwk79hei" target="blank"><img alt="" src={Instagram} className={classes.socialIcons} /></a>
                             {/* <a href="http://google.com" target="blank"><img alt="" src={Youtube} className={classes.socialIcons} /></a> */}
-                            <a href="http://google.com" target="blank"><img alt="" src={Linkedin} className={classes.socialIcons} /></a>
+                            <a href="https://www.linkedin.com/company/trioteachers/" target="blank"><img alt="" src={Linkedin} className={classes.socialIcons} /></a>
                         </Grid>
                     </Grid>
                 </div>

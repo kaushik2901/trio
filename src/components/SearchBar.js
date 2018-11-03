@@ -24,7 +24,7 @@ const styles = theme => ({
 
 const cityData = {  'Ahmedabad' : ['Paldi','Chandkheda','Maninagar','Khokhra','Hirabag Ambawadi','Vejalpur','Navrangpura','Vastrapur','Kalol','Motera,Sardar patel Ring Road','Sarkhej Gandhinagar Highway','Shahibaug','Sabarmati'],
                     'Gandhinagar' : ['KH-0'],
-                    'Surat' : ['Mota Varachha','Adajan','Nanpura',],
+                    'Surat' : ['Mota Varachha','Adajan','Nanpura', 'Bhatar', 'Parvat Patiya (Godadara)'],
                     'Mehsana' : ['Becharji'],
                     'Visnagar' : ['Kansa']   };
 

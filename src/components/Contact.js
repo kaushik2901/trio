@@ -49,6 +49,7 @@ class Contact extends Component {
 
     state = {
         email: "",
+        address: "",
         description: "",
         name : "",
         number : "",
@@ -103,7 +104,7 @@ class Contact extends Component {
                 return {errors : oldState.errors}
 
             });
-            let data = {Name: this.state.name, Contact: this.state.number, Email: this.state.email, Description : this.state.description};
+            let data = {Name: this.state.name, Contact: this.state.number, Email: this.state.email, Address: this.state.address, Description : this.state.description};
             this.props.handleFetch(data);
         }
     }
@@ -165,6 +166,20 @@ class Contact extends Component {
                                     error = {this.state.errors['email'][0]}
                                     helperText = {this.state.errors['email'][0] && this.state.errors['email'][1]}
                                     onChange={this.handleChange('email')}
+                                    margin="normal" />
+                            </Grid>
+                            <Grid item xs={12}>
+                                <TextField
+                                    id="address"
+                                    label="Address"
+                                    multiline
+                                    rows="2"
+                                    inputProps={{
+                                        maxLength: 500,
+                                    }}
+                                    className={classes.textField}
+                                    value={this.state.address}
+                                    onChange={this.handleChange('address')}
                                     margin="normal" />
                             </Grid>
                             <Grid item xs={12}>

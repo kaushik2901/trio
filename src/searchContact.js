@@ -109,7 +109,7 @@ class Album extends Component {
         }, 1000);
 
         let url = 'https://script.google.com/macros/s/AKfycbzmpiwLvqkMazpL_xBGN7qO0luaWq77b3quhU4WBPH86ePUXf8/exec?';
-        let data = {Name : this.state.Name,Contact : this.state.Contact, Email : this.state.Email, Description : this.state.Description ,
+        let data = {Name : this.state.Name,Contact : this.state.Contact, Email : this.state.Email, Address: this.state.Address, Description : this.state.Description ,
                     City : this.props.selectedCity, Locality : this.props.selectedLocality, 
                     Type : this.state.selectedType, SubType : this.state.selectedSubType, Subject : this.state.selectedSubject};
 
@@ -141,7 +141,7 @@ class Album extends Component {
             <main className={this.props.classes.layout}>
 
                 <br />
-                <Typography variant="headline" style={{textAlign: 'center'}}>Want to join Trio Teachers?</Typography>
+                {/* <Typography variant="headline" style={{textAlign: 'center'}}>Want to join Trio Teachers?</Typography> */}
                 <br />
 
                 <Collapse in={this.state.formState === formStates.contactUs}>
@@ -188,7 +188,7 @@ class Album extends Component {
                             >
                             {this.state.subCatergoryArray.map(option => (
                                 <option key={option} value={option}>
-                                {option}
+                                Class {option}
                                 </option>
                             ))}
                         </select>

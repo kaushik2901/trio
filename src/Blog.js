@@ -158,17 +158,29 @@ class Blog extends Component {
                         <div style={{position: 'relative'}}>
                             <img alt="" src={fPainting} className={classes.image} />
                             <div style={{position: 'absolute', bottom: '0%', left: '0px', padding: "10px"}}>
-                                <Typography variant="title" style={{color: 'white'}}></Typography>
+                                <Typography variant="caption" style={{color: 'white', textAlign: 'right'}}>Fenal Gajera</Typography>
                             </div>
                         </div>
                     </Grid>
                     <Grid item md={4} className={classes.secondGrid}>
                         <Grid container spacing={32}>
                             <Grid item xs={12} className={classes.mainPost}>
-                                <img alt="" src={bPainting} className={classes.image} />
+                                <div style={{position: 'relative'}}>
+                                    <img alt="" src={bPainting} className={classes.image} />
+                                    <div style={{position: 'absolute', bottom: '0%', left: '0px', padding: "10px"}}>
+                                    <Typography variant="caption" style={{color: 'white', textAlign: 'right'}}>Fenal Gajera</Typography>
+                                    </div>
+                                </div>
+                                {/* <img alt="" src={bPainting} className={classes.image} /> */}
                             </Grid>
                             <Grid item xs={12} className={classes.mainPost}>
-                                <img alt="" src={hPainting} className={classes.image} />
+                                <div style={{position: 'relative'}}>
+                                    <img alt="" src={hPainting} className={classes.image} />
+                                    <div style={{position: 'absolute', bottom: '0%', left: '0px', padding: "10px"}}>
+                                    <Typography variant="caption" style={{color: 'white', textAlign: 'right'}}>Fenal Gajera</Typography>
+                                    </div>
+                                </div>
+                                {/* <img alt="" src={hPainting} className={classes.image} /> */}
                             </Grid>
                         </Grid>
                     </Grid>
@@ -210,21 +222,33 @@ class Blog extends Component {
                     <Grid item md={4} className={classes.secondGrid}>
                         <Grid container spacing={32}>
                             <Grid item xs={12} className={classes.mainPost}>
-                                <img alt="" src={ePainting} className={classes.image} />
+                                <div style={{position: 'relative'}}>
+                                    <img alt="" src={ePainting} className={classes.image} />
+                                    <div style={{position: 'absolute', bottom: '0%', left: '0px', padding: "10px"}}>
+                                    <Typography variant="caption" style={{color: 'white', textAlign: 'right'}}>Fenal Gajera</Typography>
+                                    </div>
+                                </div>
+                                {/* <img alt="" src={ePainting} className={classes.image} /> */}
                             </Grid>
                             <Grid item xs={12} className={classes.mainPost}>
-                                <img alt="" src={cPainting} className={classes.image} />
+                                <div style={{position: 'relative'}}>
+                                    <img alt="" src={cPainting} className={classes.image} />
+                                    <div style={{position: 'absolute', bottom: '0%', left: '0px', padding: "10px"}}>
+                                    <Typography variant="caption" style={{color: 'white', textAlign: 'right'}}>Fenal Gajera</Typography>
+                                    </div>
+                                </div>
+                                {/* <img alt="" src={cPainting} className={classes.image} /> */}
                             </Grid>
                         </Grid>
                     </Grid>
                     <Grid item md={8} className={classes.mainPost}>
-                    <div style={{position: 'relative'}}>
+                        <div style={{position: 'relative'}}>
                             <img alt="" src={aPainting} className={classes.image} />
                             <div style={{position: 'absolute', bottom: '0%', left: '0px', padding: "10px"}}>
-                                {/* <Typography variant="title" style={{color: 'white'}}>The beautiful thing about learning is that no one can take it away from you</Typography> */}
+                            <Typography variant="caption" style={{color: 'white', textAlign: 'right'}}>Fenal Gajera</Typography>
                             </div>
                         </div>
-                    </Grid>
+                    </Grid> 
                 </Grid>
                 {/* End sub featured posts */}
 
