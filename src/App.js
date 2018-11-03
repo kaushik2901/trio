@@ -4,7 +4,7 @@ import { Switch, Route, withRouter } from 'react-router-dom';
 
 import NavBar from './components/NavBar';
 import Home from './Home';
-import Search from "./Search";
+import Search from "./searchContact";
 import Blog from "./Blog";
 import FullBlog from "./FullBlog";
 

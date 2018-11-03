@@ -1,245 +1,106 @@
-// /Checfk the this.stae.city it updates it i keep city but does not update on selected city !!
-
 import React, { Component }  from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
-import Grid from '@material-ui/core/Grid';
+import CssBaseline from '@material-ui/core/CssBaseline';
 import Typography from '@material-ui/core/Typography';
+import SearchSelectors from './components/SearchBar';
 
-import { withStyles } from '@material-ui/core/styles';
+import './search.css';
 
-const styles = theme => ({
-    icon: {
-        marginRight: theme.spacing.unit * 2,
-    },
-    // heroUnit: {
-    //     backgroundColor: theme.palette.background.paper,
-    //     marginTop: '20px',
-    //     width: '100%',
-    //     textAlign: 'center'
-    // },
-    heroContent: {
-        backgroundColor: theme.palette.background.paper,
-        marginTop: '80px',
-        textAlign: 'center',
-        // margin: '30px',
-        [theme.breakpoints.up('md')]: {
-            marginRight: '100px',
-            marginLeft: '100px'
-        },
-        // maxWidth: 600,
-        // padding: `${theme.spacing.unit * 8}px 0 ${theme.spacing.unit * 6}px`,
-    },
-    heroButtons: {
-        // marginTop: theme.spacing.unit * 4,
-        textAlign: 'center'
-    },
-    textField: {
-        width: "100%",
-        border: '1px solid rgba(0, 0, 0, 0.23)',
-        // color: 'white',
-        padding: '10px',
-        // border: 'none',
-        background: 'white',
-        borderRadius: '4px'
-    },
-    layout: {
-        width: 'auto',
-        [theme.breakpoints.up('md')]: {
-            marginRight: '100px',
-            marginLeft: '100px'
-        },
-        // marginLeft: '15px'
-    },
-    cardGrid: {
-        padding: `${theme.spacing.unit * 8}px 0`,
-        textAlign: 'center',
-    },
-    card: {
-        height: '100%',
-        display: 'flex',
-        flexDirection: 'column',
-    },
-    cardMedia: {
-        paddingTop: '56.25%', // 16:9
-    },
-    cardContent: {
-        flexGrow: 1,
-    },
-    footer: {
-        backgroundColor: theme.palette.background.paper,
-        padding: theme.spacing.unit * 6,
-    },
-});
+const TeacherCards = [  {id:1,name:"Suraj1",subject:"Chemistry",imageUrl:"https://i.pinimg.com/originals/a5/ce/7c/a5ce7cb72cd19f4f7e66858037f4af42.jpg",},
+                        {id:2,name:"Suraj2",subject:"Physics",imageUrl:"https://i.pinimg.com/originals/a5/ce/7c/a5ce7cb72cd19f4f7e66858037f4af42.jpg"},
+                        {cssId:"size",id:3,name:"Suraj3",subject:"Biology",imageUrl:"https://i.pinimg.com/originals/a5/ce/7c/a5ce7cb72cd19f4f7e66858037f4af42.jpg"},
+                        {id:4,name:"Suraj4",subject:"Physics",imageUrl:"https://i.pinimg.com/originals/a5/ce/7c/a5ce7cb72cd19f4f7e66858037f4af42.jpg"},
+                        {id:5,name:"Suraj5",subject:"English",imageUrl:"https://i.pinimg.com/originals/a5/ce/7c/a5ce7cb72cd19f4f7e66858037f4af42.jpg"},
+                        {id:6,name:"Suraj6",subject:"Chemistry",imageUrl:"https://i.pinimg.com/originals/a5/ce/7c/a5ce7cb72cd19f4f7e66858037f4af42.jpg",},
+                        {id:7,name:"Suraj7",subject:"Physics",imageUrl:"https://i.pinimg.com/originals/a5/ce/7c/a5ce7cb72cd19f4f7e66858037f4af42.jpg"},
+                        {id:8,name:"Suraj8",subject:"Biology",imageUrl:"https://i.pinimg.com/originals/a5/ce/7c/a5ce7cb72cd19f4f7e66858037f4af42.jpg"},
+                        {id:9,name:"Suraj9",subject:"Physics",imageUrl:"https://i.pinimg.com/originals/a5/ce/7c/a5ce7cb72cd19f4f7e66858037f4af42.jpg"},
+                        {id:10,name:"Suraj10",subject:"English",imageUrl:"https://i.pinimg.com/originals/a5/ce/7c/a5ce7cb72cd19f4f7e66858037f4af42.jpg"},
+                        {id:11,name:"Suraj11",subject:"Chemistry",imageUrl:"https://i.pinimg.com/originals/a5/ce/7c/a5ce7cb72cd19f4f7e66858037f4af42.jpg",},
+                        {id:12,name:"Suraj12",subject:"Physics",imageUrl:"https://i.pinimg.com/originals/a5/ce/7c/a5ce7cb72cd19f4f7e66858037f4af42.jpg"},
+                        {id:13,name:"Suraj13",subject:"Biology",imageUrl:"https://i.pinimg.com/originals/a5/ce/7c/a5ce7cb72cd19f4f7e66858037f4af42.jpg"},
+                        {id:14,name:"Suraj14",subject:"Physics",imageUrl:"https://i.pinimg.com/originals/a5/ce/7c/a5ce7cb72cd19f4f7e66858037f4af42.jpg"},
+                        {id:15,name:"Suraj15",subject:"English",imageUrl:"https://i.pinimg.com/originals/a5/ce/7c/a5ce7cb72cd19f4f7e66858037f4af42.jpg"}  ];
 
-const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
-
-const cityData = [  {'Ahmedabad' : ['Paldi','Vasna','Ahmd3','Admd4']},
-                    {'Vadodara' : ['Vad1','Vad2','Vad3','Vad4']},
-                    {'Surat' : ['Sur1','Sur2','Sur3','Sur4']},
-                    {'Rajkot' : ['Raj1','Raj2','Raj3','Raj4']}   ]
-
-const subjectData = ['Chemistry','Biology','Physics','English'];
-class Search extends Component {
+class Album extends Component {
     
-    constructor(props){
+    constructor(props){     
         super(props);
-        let mCity  = Object.keys(cityData[0])[0];
-        let locality = cityData[0][mCity];
-        console.log(mCity,locality);
+        this.state = {
+            filteredTeachers : TeacherCards,
+        }
         
-        this.state = { selectedCity: mCity,selectedLocality : locality[0] , localityArray : locality, selectedSubject : subjectData[0] };
-      }
+    }
 
-    
+    componentWillMount(){
+        this.handleSelectorChange(this.props);
+    }
 
-    handleChange = name => event => {
-        this.setState({
-            [name]: event.target.value,
+    handleSelectorChange(obj){
+
+        obj.selectedSubject && this.setState({
+            filteredTeachers :TeacherCards.filter(e => e.subject === obj.selectedSubject)
         });
-    };
+        
+    }
 
     render(){
-        const { classes } = this.props;
+    
+        let selectedData = {};
+        selectedData.selectedCity = this.props.selectedCity
+        selectedData.selectedLocality = this.props.selectedLocality
+        selectedData.selectedSubject = this.props.selectedSubject
+        selectedData.selectedClass = this.props.selectedClass
         return (
+            <React.Fragment>
+            <CssBaseline />
             <main>
-                {/* Hero unit */}
-                <div className={classes.heroContent}>
-                    <Typography variant="h4" align="center" color="textSecondary" paragraph>
-                    Search Here
+                <div id='searchSelectorContainer'>
+                    <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
+                        Search 
                     </Typography>
-                    <div className={classes.heroButtons}>
-                        <Grid container spacing={16} justify="center" alignItems={'center'}>                
-                            <Grid item xs={12} sm>
-                                <select
-                                    id="city"
-                                    select
-                                    label="City"
-                                    className={classes.textField}
-                                    value={this.state.selectedCity}
-                                    onChange={this.handleChange('selectedCity')}
-                                    SelectProps={{
-                                        native: true,
-                                        MenuProps: {
-                                        className: classes.menu,
-                                        },
-                                    }}
-                                    margin="normal"
-                                    variant="outlined"
-                                    >
-                                    {cityData.map(option => {
-                                        let key = Object.keys(option)[0];
-                                        return (
-                                            <option key={key} value={key}>
-                                            {key}
-                                            </option>
-                                        )}
-                                    )}
-
-                                </select>
-                            </Grid>
-                            <Grid item xs={12} sm>
-                                <select
-                                    id="locality"
-                                    select
-                                    label="Locality"
-                                    className={classes.textField}
-                                    value={this.state.selectedLocality}
-                                    onChange={this.handleChange('selectedLocality')}
-                                    SelectProps={{
-                                        native: true,
-                                        MenuProps: {
-                                        className: classes.menu,
-                                        },
-                                    }}
-                                    margin="normal"
-                                    variant="outlined"
-                                    >
-                                    {this.state.localityArray.map(option => {
-                                        return(
-                                            <option key={option} value={option}>
-                                            {option}
-                                            </option>
-                                        )}
-                                    )}
-                                </select>
-                            </Grid>
-                            <Grid item xs={12} sm>
-                                <select
-                                    id="subject"
-                                    select
-                                    label="subject"
-                                    className={classes.textField}
-                                    value={this.state.selectedSubject}
-                                    onChange={this.handleChange('selectedSubject')}
-                                    SelectProps={{
-                                        native: true,
-                                        MenuProps: {
-                                        className: classes.menu,
-                                        },
-                                    }}
-                                    margin="normal"
-                                    variant="outlined"
-                                    >
-                                    {subjectData.map(option => (
-                                        <option key={option} value={option}>
-                                        {option}
-                                        </option>
-                                    ))}
-                                </select>
-                            </Grid>
-                            <Grid item xs={12}>
-                                <Button variant="outlined" className={classes.Button} >
-                                    Search
-                                </Button>
-                            </Grid>
-                        </Grid>
+                    <div>
+                        <SearchSelectors {...selectedData} showResults handleSelectorChange={this.handleSelectorChange.bind(this)}/>
                     </div>
                 </div>
-                <div className={classNames(classes.layout, classes.cardGrid)}>
-                {/* End hero unit */}
-                <Grid container spacing={40}>
-                    {cards.map(card => (
-                    <Grid item key={card} sm={6} md={4} lg={3}>
-                        <Card className={classes.card}>
+
+                <div id='searchResultsContainer'>
+                    {this.state.filteredTeachers.map(card => (
+                    <div className='teacherCard' key={card.id} id={card.cssId}>
+                        <Card >
                         <CardMedia
-                            className={classes.cardMedia}
-                            image="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22288%22%20height%3D%22225%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20288%20225%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_164edaf95ee%20text%20%7B%20fill%3A%23eceeef%3Bfont-weight%3Abold%3Bfont-family%3AArial%2C%20Helvetica%2C%20Open%20Sans%2C%20sans-serif%2C%20monospace%3Bfont-size%3A14pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_164edaf95ee%22%3E%3Crect%20width%3D%22288%22%20height%3D%22225%22%20fill%3D%22%2355595c%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%2296.32500076293945%22%20y%3D%22118.8%22%3EThumbnail%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" // eslint-disable-line max-len
-                            title="Image title"
+                            component='img'
+                            src = {card.imageUrl}
+                            alt ='teacher'
+                            height = "175"
+                            width = "200"
                         />
-                        <CardContent className={classes.cardContent}>
+                        <CardContent>
                             <Typography gutterBottom variant="h5" component="h2">
-                            Heading
+                            {card.name}
                             </Typography>
                             <Typography>
-                            This is a media card. You can use this section to describe the content.
+                            {card.subject} : This is a media card. You can use this section to describe the content.
                             </Typography>
                         </CardContent>
                         <CardActions>
                             <Button size="small" color="primary">
-                            View
-                            </Button>
-                            <Button size="small" color="primary">
-                            Edit
+                              Details
                             </Button>
                         </CardActions>
                         </Card>
-                    </Grid>
+                    </div>
                     ))}
-                </Grid>
                 </div>
+
             </main>
+            </React.Fragment>
         );
     }
 }
 
-Search.propTypes = {
-  classes: PropTypes.object.isRequired,
-};
-
-export default withStyles(styles)(Search);
+export default Album;

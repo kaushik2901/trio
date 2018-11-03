@@ -18,7 +18,8 @@ import Button from '@material-ui/core/Button';
 
 // import backgroundImage from './images/homegbg.jpg';
 // import LeftQuote from './images/left-quote.svg';
-
+import EmailIcon from '@material-ui/icons/Email/';
+import PhoneIcon from '@material-ui/icons/LocalPhone/';
 
 import Vector from './images/wave2.svg';
 
@@ -41,6 +42,8 @@ import Twitter from './images/twitter.svg';
 // import {  } from "./images/";
 
 import SearchBar from './components/SearchBar';
+import Contact from './components/Contact';
+import ThankYou from './components/thankYou';
 
 const styles = (theme) => ({
     root: {
@@ -269,16 +272,47 @@ const styles = (theme) => ({
 
 class Home extends Component {
 
-    state = {
-        email: "",
-        description: ""
-    }
-
     handleChange = name => event => {
         this.setState({
             [name]: event.target.value,
         });
     };
+
+    state = {
+        ContactFormSubmitted : false,
+        ContactBtnText : 'Send',
+    }
+
+    handleFetch(obj){
+        
+        console.log(obj);
+        
+        this.setState({ContactBtnText : 'Sending..'});
+        const loadingAnimation = setTimeout(() => { 
+            this.setState({ContactBtnText : 'Sending...'});
+        }, 500);
+
+        const loadingAnimation2 = setTimeout(() => { 
+            this.setState({ContactBtnText : 'Sending.....'});
+        }, 1000);
+
+        let url = 'https://script.google.com/macros/s/AKfycbzmpiwLvqkMazpL_xBGN7qO0luaWq77b3quhU4WBPH86ePUXf8/exec?';
+        for(let d in obj){
+            url += d + '=' + obj[d] + '&';
+        }
+
+        fetch(url)
+        .then((user) => {
+            console.log(user);
+            clearTimeout(loadingAnimation);
+            clearTimeout(loadingAnimation2);
+            this.setState({ContactFormSubmitted : true});
+        })
+        .catch((error) => {
+            console.error(error);
+        });
+
+    }
 
     componentDidMount = () => {
         scrollToComponent(this.searchBlock, { offset: 0, align: 'middle', duration: 500, ease:'inCirc'});
@@ -324,7 +358,7 @@ class Home extends Component {
                                 </Grid>
                                 <Grid item sm className={classes.trioTextBlock}>
                                     <div style={{margin: 'auto'}}>
-                                        <Typography variant="subtitle1">Basically Trio is an institution <br />which provides good teachers to students, <br />Home tutions or Group tutions as per your choice.</Typography>
+                                        <Typography variant="subtitle1">Trio Teachers is an institution <br />which provides good teachers to students, <br />Home tutions or Group tutions as per your choice.</Typography>
                                         <Typography variant="subtitle1">With Trio there is no need to browse <br />through endless profiles, hassle and haggle.</Typography>
                                     </div>
                                 </Grid>
@@ -406,6 +440,20 @@ class Home extends Component {
                         </Grid>
                     </Grid>  
                 </div>
+                <div className={classes.quoteBlock}>
+                    <blockquote className={classes.blockquote}>
+                        {/* <Grid container>
+                            <Grid item md={4} ld={2}>
+                                
+                            </Grid>
+                            <Grid item md={8} ld={10} style={{paddingLeft: '20px'}}> */}
+                                {/* <img src={LeftQuote} style={{width: '100px'}} /> */}
+                                <Typography variant="display1"><i>Education is what remains after one has forgotten what one has learned in school.</i></Typography>
+                                <Typography variant="title" style={{textAlign: 'right'}}> - Albert Einstein</Typography>
+                            {/* </Grid>
+                        </Grid> */}
+                    </blockquote>
+                </div>
                 <div className={classes.contactBlock} style={{paddingBottom: '70px'}} ref={(section) => { setRef('contactBlock', section); }}>
                     <Grid container>
                         <Grid item xs={12} style={{paddingBottom: '30px'}}>
@@ -433,20 +481,6 @@ class Home extends Component {
                         </Grid>
                     </Grid>
                 </div>
-                <div className={classes.quoteBlock}>
-                    <blockquote className={classes.blockquote}>
-                        {/* <Grid container>
-                            <Grid item md={4} ld={2}>
-                                
-                            </Grid>
-                            <Grid item md={8} ld={10} style={{paddingLeft: '20px'}}> */}
-                                {/* <img src={LeftQuote} style={{width: '100px'}} /> */}
-                                <Typography variant="display1"><i>Education is what remains after one has forgotten what one has learned in school.</i></Typography>
-                                <Typography variant="title" style={{textAlign: 'right'}}> - Albert Einstein</Typography>
-                            {/* </Grid>
-                        </Grid> */}
-                    </blockquote>
-                </div>
                 <div className={classes.contactBlock} ref={(section) => { setRef('contactBlock', section); }}>
                     <Grid container>
                         <Grid item xs={12} style={{paddingBottom: '30px'}}>
@@ -463,20 +497,8 @@ class Home extends Component {
                                                 <Typography variant="body1">
                                                     202, <br />Sahajanand Complex, <br />Near Unique Group Tution, <br />New C. G. Road, <br />Chandkheda, <br />Ahmedabad 382424
                                                 </Typography>
-                                            </div>
-                                            {/* <br /><br /> */}
-                                        </Grid>
-                                    </Grid>
-                                </Grid>
-                                <Grid item sm xs={12} className={classes.cardWrapper}>
-                                    <Grid container>
-                                        <Grid item xs={12}>
-                                            <div className={classes.cards} style={{textAlign: 'left', width: '90%'}}>
-                                                {/* <br />
-                                                <br />
-                                                <br />
-                                                <br /> */}
-                                                <Typography variant="body1">
+                                                <br /><br />
+                                                {/* <Typography variant="body1">
                                                     8487999309
                                                 </Typography>
                                                 <Typography variant="body1">
@@ -484,41 +506,45 @@ class Home extends Component {
                                                 </Typography>
                                                 <Typography variant="body1">
                                                     trio.education.100@gmail.com
-                                                </Typography>
+                                                </Typography> */}
+
+                                                <div style={{display : 'flex',marginBottom :'15px'}}>
+                                                    <PhoneIcon />
+                                                    <Typography style={{marginLeft : '10px'}} variant="body1">
+                                                        8487999309
+                                                    </Typography>
+                                                </div>
+                                                
+                                                <div style={{display : 'flex',marginBottom :'15px'}}>
+                                                    <PhoneIcon />
+                                                    <Typography style={{marginLeft : '10px'}} variant="body1">
+                                                        7016373618
+                                                    </Typography>
+                                                </div>
+                                                
+                                                <div style={{display : 'flex',marginBottom :'15px'}}>
+                                                    <EmailIcon />
+                                                    <Typography style={{marginLeft : '10px'}} variant="body1">
+                                                    trio.education.100@gmail.com
+                                                    </Typography>
+                                                </div>
                                                 <br />
                                                 <br />
                                                 <Button href="mailto:trio.education.100@gmail.com" variant="raised" className={classes.Button}>Mail us</Button>
                                             </div>
+                                            {/* <br /><br /> */}
                                         </Grid>
                                     </Grid>
                                 </Grid>
                                 <Grid item sm xs={12} className={classes.cardWrapper}>
-                                    <div className={classes.cards} style={{width: '90%'}}>
-                                        <TextField
-                                            id="email"
-                                            label="Email"
-                                            type="email"
-                                            className={classes.textField}
-                                            value={this.state.email}
-                                            onChange={this.handleChange('email')}
-                                            margin="normal" />
-
-                                        <TextField
-                                            id="desc"
-                                            label="Description"
-                                            multiline
-                                            rows="5"
-                                            className={classes.textField}
-                                            value={this.state.description}
-                                            onChange={this.handleChange('description')}
-                                            margin="normal" />
-                                        <br /><br />
-                                        <Button variant="raised" className={classes.Button}>Send</Button>
-                                    </div>
+                                    {!this.state.ContactFormSubmitted 
+                                    ? (<Contact handleFetch = {this.handleFetch.bind(this)} buttonText = {this.state.ContactBtnText}/>) 
+                                    : (<ThankYou/>)}
                                 </Grid>
                             </Grid>
                         </Grid>
                         <Grid item xs={12} className={classes.socialIconDiv}>
+                            <br /><br />
                             <a href="https://m.facebook.com/Trio-Teachers-364527030757298/?ref=bookmarks" target="blank"><img alt="" src={Facebook} className={classes.socialIcons} /></a>
                             <a href="https://twitter.com/TeachersTrio?s=08" target="blank"><img alt="" src={Twitter} className={classes.socialIcons} /></a>
                             <a href="https://www.instagram.com/p/BpUO8m4Beqc/?utm_source=ig_share_sheet&igshid=95t9iwk79hei" target="blank"><img alt="" src={Instagram} className={classes.socialIcons} /></a>

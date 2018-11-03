@@ -16,35 +16,32 @@ const styles = theme => ({
         // color: 'white',
         padding: '10px',
         border: 'none',
-        background: 'white',
+        background: 'white',    
         borderRadius: '4px'
     },
-    Button: { borderColor: 'white', color: 'white' }
+    Button: { width : '100%',borderColor: 'white', color: 'white' }
 });
 
-const cityData = [  {'Ahmedabad' : ['Paldi','Vasna','Ahmd3','Admd4']},
-                    {'Vadodara' : ['Vad1','Vad2','Vad3','Vad4']},
-                    {'Surat' : ['Sur1','Sur2','Sur3','Sur4']},
-                    {'Rajkot' : ['Raj1','Raj2','Raj3','Raj4']}   ];
-
-const subjectData = ['Chemistry','Biology','Physics','English'];
+const cityData = {  'Ahmedabad' : ['Paldi','Chandkheda','Maninagar','Khokhra','Hirabag Ambawadi','Vejalpur','Navrangpura','Vastrapur','Kalol','Motera,Sardar patel Ring Road','Sarkhej Gandhinagar Highway','Shahibaug','Sabarmati'],
+                    'Gandhinagar' : ['KH-0'],
+                    'Surat' : ['Mota Varachha','Adajan','Nanpura',],
+                    'Mehsana' : ['Becharji'],
+                    'Visnagar' : ['Kansa']   };
 
 
 class SearchBar extends Component {
 
     constructor(props){
         super(props);
-        let mCity  = props.selectedCity;
-        let locality = cityData.find(e => Object.keys(e)[0] === mCity)[mCity];
+        this.state = { selectedCity: props.selectedCity,selectedLocality : props.selectedLocality , localityArray :  cityData[props.selectedCity]};
         
-        this.state = { selectedCity: mCity,selectedLocality : props.selectedLocality , localityArray : locality, selectedSubject : props.selectedSubject };
     }
 
     static defaultProps = {
-        selectedCity : Object.keys(cityData[0])[0],
-        selectedLocality : cityData[0][Object.keys(cityData[0])[0]][0],
-        selectedSubject : subjectData[0],
-
+        selectedCity : Object.keys(cityData)[0],
+        selectedLocality : cityData[Object.keys(cityData)[0]][0],
+        smSize : 3,
+        gridSpacing : 32,
      };
 
      
@@ -53,12 +50,18 @@ class SearchBar extends Component {
         this.setState({
             [name] : value,
         },
-        () => {        
+        () => {  
+            
+            if(this.props.showResults){
+                this.props.handleSelectorChange(this.state);
+            }
+
             if(name === 'selectedCity'){
-                let newLocalityArray = cityData.find(e => Object.keys(e)[0] === this.state.selectedCity);
+                
                 this.setState({
-                    localityArray : newLocalityArray[this.state.selectedCity],
-                }); 
+                    selectedLocality : cityData[this.state.selectedCity][0],
+                    localityArray : cityData[this.state.selectedCity],
+                },() => {console.log(this.state)}); 
             }
         });      
     }
@@ -69,49 +72,34 @@ class SearchBar extends Component {
         const { classes } = this.props;
         return (
             <div className={classes.wrapper}>
-                <Grid container spacing={16} justify="center" alignItems={'center'}>                
-                    <Grid item xs={12} sm>
+                <Grid container spacing={this.props.gridSpacing} justify="center" alignItems={'center'}>                
+                    <Grid item xs={12} sm={this.props.smSize}>
                         <select
                             id="city"
-                            select
                             label="City"
                             className={classes.textField}
                             value={this.state.selectedCity}
                             onChange={this.handleChange('selectedCity')}
-                            SelectProps={{
-                                native: true,
-                                MenuProps: {
-                                className: classes.menu,
-                                },
-                            }}
                             margin="normal"
                             variant="outlined"
                             >
-                            {cityData.map(option => {
-                                let key = Object.keys(option)[0];
+                            {Object.keys(cityData).map(option => {
                                 return (
-                                    <option key={key} value={key}>
-                                    {key}
+                                    <option key={option} value={option}>
+                                    {option}
                                     </option>
                                 )}
                             )}
 
                         </select>
                     </Grid>
-                    <Grid item xs={12} sm>
+                    <Grid item xs={12} sm={this.props.smSize}>
                         <select
                             id="locality"
-                            select
                             label="Locality"
                             className={classes.textField}
                             value={this.state.selectedLocality}
                             onChange={this.handleChange('selectedLocality')}
-                            SelectProps={{
-                                native: true,
-                                MenuProps: {
-                                className: classes.menu,
-                                },
-                            }}
                             margin="normal"
                             variant="outlined"
                             >
@@ -124,35 +112,15 @@ class SearchBar extends Component {
                             )}
                         </select>
                     </Grid>
-                    <Grid item xs={12} sm>
-                        <select
-                            id="subject"
-                            select
-                            label="subject"
-                            className={classes.textField}
-                            value={this.state.selectedSubject}
-                            onChange={this.handleChange('selectedSubject')}
-                            SelectProps={{
-                                native: true,
-                                MenuProps: {
-                                className: classes.menu,
-                                },
-                            }}
-                            margin="normal"
-                            variant="outlined"
-                            >
-                            {subjectData.map(option => (
-                                <option key={option} value={option}>
-                                {option}
-                                </option>
-                            ))}
-                        </select>
-                    </Grid>
-                    <Grid item xs={12}>
-                        <Button variant="outlined" component={NavLink} to={'Search'} className={classes.Button} >
-                            Search
+                    {/* <Grid item xs={12} sm={this.props.smSize}>
+                        
+                    </Grid> */}
+                    {!this.props.showResults &&
+                    <Grid item xs={12} sm={this.props.smSize}>
+                        <Button className={classes.Button} variant="outlined"  component={NavLink} to={{ pathname: '/search', state: {...this.state} }}>
+                        Enquire
                         </Button>
-                    </Grid>
+                    </Grid>}
                 </Grid>
             </div>
         )
